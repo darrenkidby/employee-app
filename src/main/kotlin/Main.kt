@@ -19,6 +19,9 @@ var deductions = monthPAYE + monthPRSI + cycle
 var net = gross - deductions
 
 fun main(args: Array<String>) {
+    println(fullName())
+    println("")
+    println("")
     println("Payslip")
     payslip()
     println("")
@@ -29,13 +32,19 @@ fun main(args: Array<String>) {
 
 fun twoDecimalPlaces(number: Double) = round(number * 100) / 100
 
+fun fullName() = when (gender){
+    "m", "M", "Male", "male" -> "Mr. $firstName $surname"
+    "f", "F", "Female", "female" -> "Ms. $firstName $surname"
+    else -> "$firstName $surname"
+}
+
 fun payslip(){
     println("""
     -----------------------------------------------------------------------
                                 Monthly Payslip                            
     -----------------------------------------------------------------------
                                                                            
-        Employee Name: ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()})      
+        Employee Name: ${fullName().uppercase()} (${gender.uppercase()})      
         Employee ID: ${employeeId}  
                                                                            
     -----------------------------------------------------------------------
@@ -68,7 +77,7 @@ fun payslipTwoDecimalPlace(){
                                 Monthly Payslip                            
     -----------------------------------------------------------------------
                                                                            
-        Employee Name: ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()})           
+        Employee Name: ${fullName().uppercase()} (${gender.uppercase()})           
         Employee ID: ${employeeId}  
                                                                            
     -----------------------------------------------------------------------
