@@ -9,18 +9,17 @@ var paye = 38.5
 var prsi = 5.2
 var annualBonus = 1450.50
 var cycle = 54.33
-
-var mSal = (grossSalary/12)
 var mBonus = (annualBonus/12)
-var monthPAYE = mSal * (paye / 100)
-var monthPRSI = mSal * (prsi / 100)
-var gross = mSal + mBonus
-var deductions = monthPAYE + monthPRSI + cycle
-var net = gross - deductions
 
 fun main(args: Array<String>) {
     println(fullName())
     println("")
+    println("Monthly Salary: ${getMonthlySalary()}")
+    println("Monthly PAYE: ${getMonthlyPaye()}")
+    println("Monthly PRSI: ${getMonthlyPrsi()}")
+    println("Gross: ${getGrossMonthlyPay()}")
+    println("Total Deductions: ${getTotalMonthlyDeductions()}")
+    println("Net Pay: ${getNetMonthlyPay()}")
     println("")
     println("Payslip")
     payslip()
@@ -33,6 +32,13 @@ fun fullName() = when (gender){
     "f", "F", "Female", "female" -> "Ms. $firstName $surname"
     else -> "$firstName $surname"
 }
+
+fun getMonthlySalary() = (grossSalary/12)
+fun getMonthlyPaye() = getMonthlySalary() * (paye / 100)
+fun getMonthlyPrsi() = getMonthlySalary() * (prsi / 100)
+fun getGrossMonthlyPay() = getMonthlySalary() + mBonus
+fun getTotalMonthlyDeductions() = getMonthlyPaye() + getMonthlyPrsi() + cycle
+fun getNetMonthlyPay() = getGrossMonthlyPay() - getTotalMonthlyDeductions()
 
 fun payslip(){
     println("""
@@ -48,21 +54,21 @@ fun payslip(){
     PAYMENT DETAILS             
                                                                            
     -----------------------------------------------------------------------
-        Salary: ${twoDecimalPlaces(mSal)}                  
+        Salary: ${twoDecimalPlaces(getMonthlySalary())}                  
         Bonus: ${twoDecimalPlaces(mBonus)}                           
         
-        Gross: ${twoDecimalPlaces(gross)}     
+        Gross: ${twoDecimalPlaces(getGrossMonthlyPay())}     
     -----------------------------------------------------------------------
                                                                            
     DEDUCTION DETAILS              
                                                                            
     -----------------------------------------------------------------------
-        PAYE: ${twoDecimalPlaces(monthPAYE)}                  
-        PRSI: ${twoDecimalPlaces(monthPRSI)}                   
+        PAYE: ${twoDecimalPlaces(getMonthlyPaye())}                  
+        PRSI: ${twoDecimalPlaces(getMonthlyPrsi())}                   
         Cycle to Work: ${twoDecimalPlaces(cycle)}           
         
-        Total Deductions: ${twoDecimalPlaces(deductions)}      
+        Total Deductions: ${twoDecimalPlaces(getTotalMonthlyDeductions())}      
     -----------------------------------------------------------------------
-    NET PAY: ${twoDecimalPlaces(net)}                                        
+    NET PAY: ${twoDecimalPlaces(getNetMonthlyPay())}                                        
     -----------------------------------------------------------------------""")
 }
