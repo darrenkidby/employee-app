@@ -17,6 +17,36 @@ var deductions = monthPAYE + monthPRSI + cycle
 var net = gross - deductions
 
 fun main(args: Array<String>) {
+    println("Payslip")
+    Payslip()
+    println("")
+    println("Payslip With Two Decimal Places")
+    PayslipTwoDecimalPlace()
+}
+
+fun Payslip(){
+    println("-------------------------------------------------------------------------")
+    println("|                            Monthly Payslip                            |")
+    println("|-----------------------------------------------------------------------|")
+    println("|                                                                       |")
+    println("|  Employee Name: " + firstName.uppercase() + " " + surname.uppercase() + " (" + gender.uppercase() + ")                       Employee ID: " + employeeId + "  |")
+    println("|                                                                       |")
+    println("|-----------------------------------------------------------------------|")
+    println("|                                                                       |")
+    println("|  PAYMENT DETAILS                  DEDUCTION DETAILS                   |")
+    println("|                                                                       |")
+    println("|-----------------------------------------------------------------------|")
+    println("|  Salary: " + mSal + "        PAYE: " + monthPAYE + "            |")
+    println("|  Bonus: " + mBonus + "                   PRSI: " +  monthPRSI + "             |")
+    println("|                                   Cycle to Work: " + cycle + "                |")
+    println("|-----------------------------------------------------------------------|")
+    println("|  Gross: " + gross + "         Total Deductions: " + deductions + " |")
+    println("|-----------------------------------------------------------------------|")
+    println("|               NET PAY: " + net + "                              |")
+    println("|-----------------------------------------------------------------------|")
+}
+
+fun PayslipTwoDecimalPlace(){
     println("-------------------------------------------------------------------------")
     println("|                            Monthly Payslip                            |")
     println("|-----------------------------------------------------------------------|")
