@@ -29,45 +29,47 @@ fun main(args: Array<String>) {
 fun twoDecimalPlaces(number: Double) = round(number * 100) / 100
 
 fun payslip(){
-    println("-------------------------------------------------------------------------")
-    println("|                            Monthly Payslip                            |")
-    println("|-----------------------------------------------------------------------|")
-    println("|                                                                       |")
-    println("|  Employee Name: ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()})                       Employee ID: ${employeeId}  |")
-    println("|                                                                       |")
-    println("|-----------------------------------------------------------------------|")
-    println("|                                                                       |")
-    println("|  PAYMENT DETAILS                  DEDUCTION DETAILS                   |")
-    println("|                                                                       |")
-    println("|-----------------------------------------------------------------------|")
-    println("|  Salary: ${mSal}        PAYE: ${monthPAYE}            |")
-    println("|  Bonus: ${mBonus}                   PRSI: ${monthPRSI}             |")
-    println("|                                   Cycle to Work: ${cycle}                |")
-    println("|-----------------------------------------------------------------------|")
-    println("|  Gross: ${gross}         Total Deductions: ${deductions} |")
-    println("|-----------------------------------------------------------------------|")
-    println("|               NET PAY: ${net}                              |")
-    println("|-----------------------------------------------------------------------|")
+    println("""
+    -------------------------------------------------------------------------
+    |                            Monthly Payslip                            |
+    |-----------------------------------------------------------------------|
+    |                                                                       |
+    |  Employee Name: ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()})                       Employee ID: ${employeeId}  |
+    |                                                                       |
+    |-----------------------------------------------------------------------|
+    |                                                                       |
+    |  PAYMENT DETAILS                  DEDUCTION DETAILS                   |
+    |                                                                       |
+    |-----------------------------------------------------------------------|
+    |  Salary: ${mSal}        PAYE: ${monthPAYE}            |
+    |  Bonus: ${mBonus}                   PRSI: ${monthPRSI}             |
+    |                                   Cycle to Work: ${cycle}                |
+    |-----------------------------------------------------------------------|
+    |  Gross: ${gross}         Total Deductions: ${deductions} |
+    |-----------------------------------------------------------------------|
+    |               NET PAY: ${net}                              |
+    |-----------------------------------------------------------------------|""")
 }
 
 fun payslipTwoDecimalPlace(){
-    println("-------------------------------------------------------------------------")
-    println("|                            Monthly Payslip                            |")
-    println("|-----------------------------------------------------------------------|")
-    println("|                                                                       |")
-    println("|  Employee Name: ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()})                       Employee ID: ${employeeId}  |")
-    println("|                                                                       |")
-    println("|-----------------------------------------------------------------------|")
-    println("|                                                                       |")
-    println("|  PAYMENT DETAILS                       DEDUCTION DETAILS              |")
-    println("|                                                                       |")
-    println("|-----------------------------------------------------------------------|")
-    println("|  Salary: ${twoDecimalPlaces(mSal)}                        PAYE: ${twoDecimalPlaces(monthPAYE)}                  |")
-    println("|  Bonus: ${twoDecimalPlaces(mBonus)}                         PRSI: ${twoDecimalPlaces(monthPRSI)}                   |")
-    println("|                                        Cycle to Work: ${twoDecimalPlaces(cycle)}           |")
-    println("|-----------------------------------------------------------------------|")
-    println("|  Gross: ${twoDecimalPlaces(gross)}                        Total Deductions: ${twoDecimalPlaces(deductions)}      |")
-    println("|-----------------------------------------------------------------------|")
-    println("|               NET PAY: ${twoDecimalPlaces(net)}                                        |")
-    println("|-----------------------------------------------------------------------|")
+    println("""
+    -------------------------------------------------------------------------
+    |                            Monthly Payslip                            |
+    |-----------------------------------------------------------------------|
+    |                                                                       |
+    |  Employee Name: ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()})                       Employee ID: ${employeeId}  |
+    |                                                                       |
+    |-----------------------------------------------------------------------|
+    |                                                                       |
+    |  PAYMENT DETAILS                       DEDUCTION DETAILS              |
+    |                                                                       |
+    |-----------------------------------------------------------------------|
+    |  Salary: ${twoDecimalPlaces(mSal)}                        PAYE: ${twoDecimalPlaces(monthPAYE)}                  |
+    |  Bonus: ${twoDecimalPlaces(mBonus)}                         PRSI: ${twoDecimalPlaces(monthPRSI)}                   |
+    |                                        Cycle to Work: ${twoDecimalPlaces(cycle)}           |
+    |-----------------------------------------------------------------------|
+    |  Gross: ${twoDecimalPlaces(gross)}                        Total Deductions: ${twoDecimalPlaces(deductions)}      |
+    |-----------------------------------------------------------------------|
+    |               NET PAY: ${twoDecimalPlaces(net)}                                        |
+    |-----------------------------------------------------------------------|""")
 }
