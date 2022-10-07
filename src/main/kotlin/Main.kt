@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
     println("|                            Monthly Payslip                            |")
     println("|-----------------------------------------------------------------------|")
     println("|                                                                       |")
-    println("|  Employee Name: " + firstName + " " + surname + " (" + gender + ")                       Employee ID: " + employeeId + "  |")
+    println("|  Employee Name: " + firstName.uppercase() + " " + surname.uppercase() + " (" + gender.uppercase() + ")                       Employee ID: " + employeeId + "  |")
     println("|                                                                       |")
     println("|-----------------------------------------------------------------------|")
     println("|                                                                       |")
