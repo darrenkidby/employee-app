@@ -33,12 +33,17 @@ fun fullName() = when (gender){
     else -> "$firstName $surname"
 }
 
-fun getMonthlySalary() = (grossSalary/12)
-fun getMonthlyPaye() = getMonthlySalary() * (paye / 100)
-fun getMonthlyPrsi() = getMonthlySalary() * (prsi / 100)
-fun getGrossMonthlyPay() = getMonthlySalary() + mBonus
-fun getTotalMonthlyDeductions() = getMonthlyPaye() + getMonthlyPrsi() + cycle
-fun getNetMonthlyPay() = getGrossMonthlyPay() - getTotalMonthlyDeductions()
+fun getMonthlySalary() = twoDecimalPlaces(grossSalary/12)
+
+fun getMonthlyPaye() = twoDecimalPlaces(getMonthlySalary() * (paye / 100))
+
+fun getMonthlyPrsi() = twoDecimalPlaces(getMonthlySalary() * (prsi / 100))
+
+fun getGrossMonthlyPay() = twoDecimalPlaces(getMonthlySalary() + mBonus)
+
+fun getTotalMonthlyDeductions() = twoDecimalPlaces(getMonthlyPaye() + getMonthlyPrsi() + cycle)
+
+fun getNetMonthlyPay() = twoDecimalPlaces(getGrossMonthlyPay() - getTotalMonthlyDeductions())
 
 fun payslip(){
     println("""
@@ -54,7 +59,7 @@ fun payslip(){
     PAYMENT DETAILS             
                                                                            
     -----------------------------------------------------------------------
-        Salary: ${twoDecimalPlaces(getMonthlySalary())}                  
+        Salary: ${getMonthlySalary()}                  
         Bonus: ${twoDecimalPlaces(mBonus)}                           
         
         Gross: ${twoDecimalPlaces(getGrossMonthlyPay())}     
@@ -63,12 +68,12 @@ fun payslip(){
     DEDUCTION DETAILS              
                                                                            
     -----------------------------------------------------------------------
-        PAYE: ${twoDecimalPlaces(getMonthlyPaye())}                  
-        PRSI: ${twoDecimalPlaces(getMonthlyPrsi())}                   
+        PAYE: ${getMonthlyPaye()}                  
+        PRSI: ${getMonthlyPrsi()}                   
         Cycle to Work: ${twoDecimalPlaces(cycle)}           
         
-        Total Deductions: ${twoDecimalPlaces(getTotalMonthlyDeductions())}      
+        Total Deductions: ${getTotalMonthlyDeductions()}      
     -----------------------------------------------------------------------
-    NET PAY: ${twoDecimalPlaces(getNetMonthlyPay())}                                        
+    NET PAY: ${getNetMonthlyPay()}                                        
     -----------------------------------------------------------------------""")
 }
