@@ -24,10 +24,6 @@ fun main(args: Array<String>) {
     println("")
     println("Payslip")
     payslip()
-    println("")
-    println("")
-    println("Payslip With Two Decimal Places")
-    payslipTwoDecimalPlace()
 }
 
 fun twoDecimalPlaces(number: Double) = round(number * 100) / 100
@@ -39,39 +35,6 @@ fun fullName() = when (gender){
 }
 
 fun payslip(){
-    println("""
-    -----------------------------------------------------------------------
-                                Monthly Payslip                            
-    -----------------------------------------------------------------------
-                                                                           
-        Employee Name: ${fullName().uppercase()} (${gender.uppercase()})      
-        Employee ID: ${employeeId}  
-                                                                           
-    -----------------------------------------------------------------------
-                                                                           
-    PAYMENT DETAILS                   
-                                                                           
-    -----------------------------------------------------------------------
-        Salary: ${mSal}         
-        Bonus: ${mBonus}                                
-        
-        Gross: ${gross} 
-    -----------------------------------------------------------------------
-    
-    DEDUCTION DETAILS
-    
-    -----------------------------------------------------------------------
-        PAYE: ${monthPAYE}
-        PRSI: ${monthPRSI}
-        Cycle to Work: ${cycle}
-        
-        Total Deductions: ${deductions}
-    -----------------------------------------------------------------------
-    NET PAY: ${net}                              
-    -----------------------------------------------------------------------""")
-}
-
-fun payslipTwoDecimalPlace(){
     println("""
     -----------------------------------------------------------------------
                                 Monthly Payslip                            
