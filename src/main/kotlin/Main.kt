@@ -8,19 +8,13 @@ var prsi = 5.2
 var annualBonus = 1450.50
 var cycle = 54.33
 
-var a = 12
-var b: Double= grossSalary
-var c: Double= annualBonus
-var d: Double= paye
-var e: Double= prsi
-
-fun divide(a: Int, b: Double): Double {
-    return b/a
-}
-
-fun divide2(a: Int, c: Double): Double {
-    return c/a
-}
+var mSal = (grossSalary/12)
+var mBonus = (annualBonus/12)
+var monthPAYE = mSal * (paye / 100)
+var monthPRSI = mSal * (prsi / 100)
+var gross = mSal + mBonus
+var deductions = monthPAYE + monthPRSI + cycle
+var net = gross - deductions
 
 fun main(args: Array<String>) {
     println("-------------------------------------------------------------------------")
@@ -31,15 +25,15 @@ fun main(args: Array<String>) {
     println("|                                                                       |")
     println("|-----------------------------------------------------------------------|")
     println("|                                                                       |")
-    println("|  PAYMENT DETAILS                       DEDUCTION DETAILS              |")
+    println("|  PAYMENT DETAILS                  DEDUCTION DETAILS                   |")
     println("|                                                                       |")
     println("|-----------------------------------------------------------------------|")
-    println("|  Salary: " + (divide(a, b)) + "             PAYE: " + ((divide(a, b)) * (paye / 100)) + "       |")
-    println("|  Bonus: " + (divide2(a, c)) + "                        PRSI: " +  ((divide(a, b)) * (prsi / 100)) + "        |")
-    println("|                                        Cycle to Work: " + cycle + "           |")
+    println("|  Salary: " + mSal + "        PAYE: " + monthPAYE + "            |")
+    println("|  Bonus: " + mBonus + "                   PRSI: " +  monthPRSI + "             |")
+    println("|                                   Cycle to Work: " + cycle + "                |")
     println("|-----------------------------------------------------------------------|")
-    println("|  Gross: " + ((divide(a, b)) + (divide2(a, c))) + "              Total Deductions: " + (paye + prsi + cycle) +"        |")
+    println("|  Gross: " + gross + "         Total Deductions: " + deductions + " |")
     println("|-----------------------------------------------------------------------|")
-    println("|               NET PAY: " + ((divide(a, b)) + (divide2(a, c) - (paye + prsi + cycle))) + "                              |")
+    println("|               NET PAY: " + net + "                              |")
     println("|-----------------------------------------------------------------------|")
 }
