@@ -4,18 +4,21 @@ import mu.KotlinLogging
 
 val logger = KotlinLogging.logger {}
 var employees = EmployeeAPI ()
+var colour = "\u001b[36m"
+var bold = "\u001B[1m"
+var normal = "\u001b[0m"
+
 
 fun main(args: Array<String>){
     logger.info { "Launching Employee App" }
     logger.info { "You will Have to Know the Employee ID" }
     logger.info { "For Dummy Data, Type -99" }
-    println()
     start()
 }
 
 fun menu() : Int {
-    print(""" 
-         |Employee Menu
+    print(""" ${colour}
+         |${bold}Employee Menu
          |   1. Add Employee
          |   2. Delete Employee
          |   3. Update Employee
@@ -24,7 +27,7 @@ fun menu() : Int {
          |   6. Print Payslip for Employee
          |  -1. Exit
          |       
-         |Enter Option : """.trimMargin())
+         |Enter Option : ${normal}""".trimMargin())
     return readLine()!!.toInt()
 }
 
@@ -119,7 +122,7 @@ fun update() {
     print("Enter Cycle to Work Deduction: ")
     val cycle= readLine()!!.toDouble()
 
-    employees.new(Employee(firstName, surname, gender, 0, grossSalary, paye, prsi, annualBonus, cycle))
+    employees.changed(Employee(firstName, surname, gender, 0, grossSalary, paye, prsi, annualBonus, cycle))
     return employees.edit(employee)
 }
 

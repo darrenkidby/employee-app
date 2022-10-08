@@ -32,8 +32,9 @@ class EmployeeAPI {
     fun edit(employee: Employee?) {
         employees.remove(employee)
     }
-    fun new(employee: Employee) {
+    fun changed(employee: Employee) {
         employee.employeeId = getId()
         employees.add(employee)
     }
+    
 }
