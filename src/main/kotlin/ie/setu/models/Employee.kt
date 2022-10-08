@@ -1,4 +1,4 @@
-package ie.setu
+package ie.setu.models
 
 import kotlin.math.round
 

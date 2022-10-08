@@ -1,5 +1,5 @@
-import ie.setu.Employee
-import ie.setu.EmployeeAPI
+import ie.setu.models.Employee
+import ie.setu.controllers.EmployeeAPI
 import mu.KotlinLogging
 
 val logger = KotlinLogging.logger {}
