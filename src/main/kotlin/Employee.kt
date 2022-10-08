@@ -55,4 +55,8 @@ class Employee (var firstName: String, var surname: String, var gender: Char, va
         )
     }
     fun twoDecimalPlaces(number: Double) = round(number * 100) / 100
+
+    override fun toString(): String {
+        return "Employee(firstName='$firstName', surname='$surname', gender=$gender, employeeID=$employeeId, grossSalary=$grossSalary, payePercentage=$paye, prsiPercentage=$prsi, annualBonus=$annualBonus, cycleToWorkMonthlyDeduction=$cycle)"
+    }
 }
