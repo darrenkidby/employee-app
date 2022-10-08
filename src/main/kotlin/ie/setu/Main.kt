@@ -17,9 +17,10 @@ fun menu() : Int {
     print(""" 
          |Employee Menu
          |   1. Add Employee
-         |   2. List All Employees
-         |   3. Search Employees 
-         |   4. Print Payslip for Employee
+         |   2. Delete Employee
+         |   3. List All Employees
+         |   4. Search Employees 
+         |   5. Print Payslip for Employee
          |  -1. Exit
          |       
          |Enter Option : """.trimMargin())
@@ -36,15 +37,15 @@ fun add(){
     print("Enter gross salary: ")
     val grossSalary = readLine()!!.toDouble()
     print("Enter PAYE %: ")
-    val payePercentage = readLine()!!.toDouble()
+    val paye = readLine()!!.toDouble()
     print("Enter PRSI %: ")
-    val prsiPercentage = readLine()!!.toDouble()
+    val prsi = readLine()!!.toDouble()
     print("Enter Annual Bonus: ")
     val annualBonus= readLine()!!.toDouble()
     print("Enter Cycle to Work Deduction: ")
-    val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
+    val cycle= readLine()!!.toDouble()
 
-    employees.create(Employee(firstName, surname, gender, 0, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction))
+    employees.create(Employee(firstName, surname, gender, 0, grossSalary, paye, prsi, annualBonus, cycle))
 }
 
 fun start() {
@@ -54,9 +55,10 @@ fun start() {
         input = menu()
         when (input) {
             1 -> add()
-            2 -> list()
-            3 -> search()
-            4 -> paySlip()
+            2 -> delete()
+            3 -> list()
+            4 -> search()
+            5 -> paySlip()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -88,6 +90,12 @@ fun paySlip(){
     val employee = getEmployeeById()
     if (employee != null)
         println(employee.getPayslip())
+}
+
+
+fun delete() {
+    val employee = getEmployeeById()
+    return employees.destroy(employee)
 }
 
 fun dummyData() {
