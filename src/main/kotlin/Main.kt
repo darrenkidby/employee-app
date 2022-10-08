@@ -12,14 +12,23 @@ var cycle = 54.33
 var mBonus = (annualBonus/12)
 
 fun main(args: Array<String>) {
-    println(fullName())
-    println("Monthly Salary: ${getMonthlySalary()}")
-    println("Monthly PAYE: ${getMonthlyPaye()}")
-    println("Monthly PRSI: ${getMonthlyPrsi()}")
-    println("Monthly Gross Pay: ${getGrossMonthlyPay()}")
-    println("Monthly Total Deductions: ${getTotalMonthlyDeductions()}")
-    println("Monthly Net Pay: ${getNetMonthlyPay()}")
-    println(getPayslip())
+    var input : Int
+
+    do {
+        input = menu()
+        when (input) {
+            1 -> println("Monthly Salary: ${getMonthlySalary()}")
+            2 -> println ("Monthly PAYE: ${getMonthlyPaye()}")
+            3 -> println ("Monthly PRSI: ${getMonthlyPrsi()}")
+            4 -> println ("Monthly Gross Pay: ${getGrossMonthlyPay()}")
+            5 -> println ("Monthly Total Deductions: ${getTotalMonthlyDeductions()}")
+            6 -> println ("Monthly Net Pay: ${getNetMonthlyPay()}")
+            7 -> println (getPayslip())
+            -1 -> println("Exiting App")
+            else -> println("Invalid Option")
+        }
+        println()
+    } while (input != -1)
 }
 
 fun twoDecimalPlaces(number: Double) = round(number * 100) / 100
@@ -73,4 +82,19 @@ fun getPayslip(){
     -----------------------------------------------------------------------
     NET PAY: ${getNetMonthlyPay()}                                        
     -----------------------------------------------------------------------""")
+}
+
+fun menu() : Int {
+    print("""
+        Employee Menu for ${fullName()}
+            1. Monthly Salary
+            2. Monthly PAYE
+            3. Monthly PRSI
+            4. Monthly Gross Pay
+            5. Monthly Total Deductions
+            6. Monthly Net Pay
+            7. Full Payslip
+           -1. Exit
+        Enter Option: """)
+        return readLine()!!.toInt()
 }
