@@ -1,15 +1,7 @@
+import ie.setu.employeeApp.Employee
 import kotlin.math.round
 
-var firstName = "Joe"
-var surname = "Soap"
-var gender = "m"
-var employeeId = 6143
-var grossSalary = 67543.21
-var paye = 38.5
-var prsi = 5.2
-var annualBonus = 1450.50
-var cycle = 54.33
-var mBonus = (annualBonus/12)
+var employee = Employee ("Joe", "Soap", 'm', 6143, 67543.21, 38.5, 5.2, 1450.50, 54.33)
 
 fun main(args: Array<String>) {
     var input : Int
@@ -33,21 +25,23 @@ fun main(args: Array<String>) {
 
 fun twoDecimalPlaces(number: Double) = round(number * 100) / 100
 
-fun fullName() = when (gender){
-    "m", "M", "Male", "male" -> "Mr. $firstName $surname"
-    "f", "F", "Female", "female" -> "Ms. $firstName $surname"
-    else -> "$firstName $surname"
+fun fullName() = when (employee.gender){
+    'm', 'M' -> "Mr. ${employee.firstName} ${employee.surname}"
+    'f', 'F' -> "Ms. ${employee.firstName} ${employee.surname}"
+    else -> "${employee.firstName} ${employee.surname}"
 }
 
-fun getMonthlySalary() = twoDecimalPlaces(grossSalary/12)
+fun getMonthlySalary() = twoDecimalPlaces(employee.grossSalary/12)
 
-fun getMonthlyPaye() = twoDecimalPlaces(getMonthlySalary() * (paye / 100))
+fun getMonthlyBonus() = twoDecimalPlaces(employee.annualBonus/12)
 
-fun getMonthlyPrsi() = twoDecimalPlaces(getMonthlySalary() * (prsi / 100))
+fun getMonthlyPaye() = twoDecimalPlaces(getMonthlySalary() * (employee.paye / 100))
 
-fun getGrossMonthlyPay() = twoDecimalPlaces(getMonthlySalary() + mBonus)
+fun getMonthlyPrsi() = twoDecimalPlaces(getMonthlySalary() * (employee.prsi / 100))
 
-fun getTotalMonthlyDeductions() = twoDecimalPlaces(getMonthlyPaye() + getMonthlyPrsi() + cycle)
+fun getGrossMonthlyPay() = twoDecimalPlaces(getMonthlySalary() + getMonthlyBonus())
+
+fun getTotalMonthlyDeductions() = twoDecimalPlaces(getMonthlyPaye() + getMonthlyPrsi() + employee.cycle)
 
 fun getNetMonthlyPay() = twoDecimalPlaces(getGrossMonthlyPay() - getTotalMonthlyDeductions())
 
@@ -57,8 +51,8 @@ fun getPayslip(){
                                 Monthly Payslip                            
     -----------------------------------------------------------------------
                                                                            
-        Employee Name: ${fullName().uppercase()} (${gender.uppercase()})           
-        Employee ID: ${employeeId}  
+        Employee Name: ${fullName().uppercase()} (${employee.gender.uppercase()})           
+        Employee ID: ${employee.employeeId}  
                                                                            
     -----------------------------------------------------------------------
                                                                            
@@ -66,7 +60,7 @@ fun getPayslip(){
                                                                            
     -----------------------------------------------------------------------
         Salary: ${getMonthlySalary()}                  
-        Bonus: ${twoDecimalPlaces(mBonus)}                           
+        Bonus: ${twoDecimalPlaces(getMonthlyBonus())}                           
         
         Gross: ${twoDecimalPlaces(getGrossMonthlyPay())}     
     -----------------------------------------------------------------------
@@ -76,7 +70,7 @@ fun getPayslip(){
     -----------------------------------------------------------------------
         PAYE: ${getMonthlyPaye()}                  
         PRSI: ${getMonthlyPrsi()}                   
-        Cycle to Work: ${twoDecimalPlaces(cycle)}           
+        Cycle to Work: ${twoDecimalPlaces(employee.cycle)}           
         
         Total Deductions: ${getTotalMonthlyDeductions()}      
     -----------------------------------------------------------------------

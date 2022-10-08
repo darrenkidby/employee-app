@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-group = 'ie.setu.employee-app'
+group = 'ie.setu.employeeApp'
 version = '1.0-SNAPSHOT'
 
 repositories {
