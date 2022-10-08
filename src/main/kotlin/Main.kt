@@ -13,16 +13,13 @@ var mBonus = (annualBonus/12)
 
 fun main(args: Array<String>) {
     println(fullName())
-    println("")
     println("Monthly Salary: ${getMonthlySalary()}")
     println("Monthly PAYE: ${getMonthlyPaye()}")
     println("Monthly PRSI: ${getMonthlyPrsi()}")
-    println("Gross: ${getGrossMonthlyPay()}")
-    println("Total Deductions: ${getTotalMonthlyDeductions()}")
-    println("Net Pay: ${getNetMonthlyPay()}")
-    println("")
-    println("Payslip")
-    payslip()
+    println("Monthly Gross Pay: ${getGrossMonthlyPay()}")
+    println("Monthly Total Deductions: ${getTotalMonthlyDeductions()}")
+    println("Monthly Net Pay: ${getNetMonthlyPay()}")
+    println(getPayslip())
 }
 
 fun twoDecimalPlaces(number: Double) = round(number * 100) / 100
@@ -45,7 +42,7 @@ fun getTotalMonthlyDeductions() = twoDecimalPlaces(getMonthlyPaye() + getMonthly
 
 fun getNetMonthlyPay() = twoDecimalPlaces(getGrossMonthlyPay() - getTotalMonthlyDeductions())
 
-fun payslip(){
+fun getPayslip(){
     println("""
     -----------------------------------------------------------------------
                                 Monthly Payslip                            
